@@ -36,7 +36,7 @@ describe("reduce", () => {
 
   it("solves test case #3", () => {
     const nums = [];
-    function sum(accum, curr) {
+    function sum() {
       return 0;
     }
     expect(reduce(nums, sum, 25)).toBe(25);
