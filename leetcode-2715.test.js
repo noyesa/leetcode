@@ -25,23 +25,21 @@ function cancellable(fn, args, t) {
 
 describe("cancellable", () => {
   it("passes test case #1", () => {
-    const fn = (x) => x * 5;
-    const fnSpy = vi.fn(fn);
+    const fn = vi.fn((x) => x * 5);
 
     vi.useFakeTimers();
 
-    const cancelFn = cancellable(fnSpy, [2], 20);
-    const cancelFnSpy = vi.fn(cancelFn);
-    setTimeout(cancelFnSpy, 50);
+    const cancelFn = vi.fn(cancellable(fn, [2], 20));
+    setTimeout(cancelFn, 50);
 
     // Advance to after the cancellable firing but before the cancel.
     vi.advanceTimersByTime(25);
 
-    expect(fnSpy).toHaveBeenCalledOnce();
-    expect(cancelFnSpy).not.toHaveBeenCalled();
+    expect(fn).toHaveBeenCalledOnce();
+    expect(cancelFn).not.toHaveBeenCalled();
 
     vi.advanceTimersByTime(25);
-    expect(cancelFnSpy).toHaveBeenCalled();
+    expect(cancelFn).toHaveBeenCalled();
 
     vi.useRealTimers();
   });
