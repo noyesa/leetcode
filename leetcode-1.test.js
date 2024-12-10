@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 
 /**
  * Given an array of integers nums and an integer target, return indices of the
@@ -18,20 +18,20 @@ export function twoSum(nums, target) {
   }
 }
 
-describe('twoSum', () => {
-  it('example #1', () => {
+describe("twoSum", () => {
+  it("example #1", () => {
     const nums = [2, 7, 11, 15];
     const target = 9;
     expect(twoSum(nums, target)).toStrictEqual([0, 1]);
   });
 
-  it('example #2', () => {
+  it("example #2", () => {
     const nums = [3, 2, 4];
     const target = 6;
     expect(twoSum(nums, target)).toStrictEqual([1, 2]);
   });
 
-  it('example #3', () => {
+  it("example #3", () => {
     const nums = [3, 3];
     const target = 6;
     expect(twoSum(nums, target)).toStrictEqual([0, 1]);
