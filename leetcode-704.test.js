@@ -11,7 +11,7 @@ import { describe, it, expect } from 'vitest';
 function search(nums, target) {
   let l = 0;
   let r = nums.length - 1;
-  while (l < r) {
+  while (l <= r) {
     const mid = Math.floor((l + r) / 2);
     const midValue = nums[mid];
     if (midValue === target) {
@@ -23,7 +23,7 @@ function search(nums, target) {
     }
   }
 
-  return (nums[l] === target) ? l : -1;
+  return -1;
 }
 
 describe('search', () => {
@@ -37,5 +37,11 @@ describe('search', () => {
     const nums = [-1, 0, 3, 5, 9, 12];
     const target = 2;
     expect(search(nums, target)).toBe(-1);
+  });
+
+  it('solves example #2', () => {
+    const nums = [-1, 0, 3, 5, 9, 12];
+    const target = 9;
+    expect(search(nums, target)).toBe(4);
   });
 });
